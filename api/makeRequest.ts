@@ -21,7 +21,5 @@ export const makeRequest = (url: string, options?: IOptionsMakeRequest) => {
         }
     }
 
-    console.log(config.baseUrl + url);
-
     return fetch(config.baseUrl + url, init);
 }
