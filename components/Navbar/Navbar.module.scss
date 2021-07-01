@@ -1,0 +1,33 @@
+$side-padding: 24px;
+$side-padding-menu: 8px;
+
+.Navbar {
+    &__title {
+        color: $primary-color;
+        padding: 0 $side-padding;
+    }
+
+    &__menu {
+        padding: 0 $side-padding-menu;
+        list-style-type: none;
+    }
+
+    &__menuLink {
+        height: 40px;
+        padding: 0 $side-padding - $side-padding-menu;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: color 0.8s;
+
+        &_active {
+            background-color: #282828;
+            color: $primary-color;
+        }
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
