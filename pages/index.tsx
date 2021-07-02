@@ -5,12 +5,12 @@ import MainContainer from "../components/MainContainer/MainContainer";
 export default function Home() {
     const [health, setHealth] = useState("");
 
-    useEffect(() => {
-        apiHealth.getHealth()
-            .then((health) => {
-                setHealth(health);
-            });
-    }, []);
+    // useEffect(() => {
+    //     apiHealth.getHealth()
+    //         .then((health) => {
+    //             setHealth(health);
+    //         });
+    // }, []);
 
     return (
         <MainContainer>
