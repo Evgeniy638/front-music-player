@@ -5,6 +5,7 @@ import { setBaseUrl } from "../../api";
 
 import style from "./MainContainer.module.scss";
 import Navbar from "../Navbar/Navbar";
+import MusicProcessing from "../MusicProcessing/MusicProcessing";
 
 setBaseUrl(getConfig().publicRuntimeConfig.BASE_URL);
 
@@ -16,6 +17,7 @@ const MainContainer= (props: IPropsMainContainer) => {
     return (
         <>
             <MusicPlayerHead/>
+            <MusicProcessing/>
             <div className={style.MainContainer}>
                 <nav className={style.MainContainer__nav}>
                     <Navbar/>

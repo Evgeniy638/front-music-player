@@ -14,6 +14,13 @@ export const changeCurrentTime = (currentTime: number): ActionMusic => {
     }
 }
 
+export const changeVisibleTime = (visibleTime: number): ActionMusic => {
+    return {
+        type: MusicTypeActions.CHANGE_VISIBLE_TIME,
+        visibleTime
+    }
+}
+
 export const changeSrcAudio = (srcAudio: string): ActionMusic => {
     return {
         type: MusicTypeActions.CHANGE_SRC_AUDIO,
@@ -46,4 +53,3 @@ export const stopMusic = (): ActionMusic => {
         type: MusicTypeActions.STOP
     }
 }
-

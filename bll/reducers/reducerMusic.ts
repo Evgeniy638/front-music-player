@@ -3,10 +3,11 @@ import { ActionMusic, MusicTypeActions, StateMusic } from './../types/typeMusic'
 const initialState: StateMusic = {
     name: "",
     srcImage: "",
-    srcAudio: "",
-    volume: 100,
+    srcAudio: "https://files-storeee.herokuapp.com/upload/123.mp3",
+    volume: 1,
     currentTime: 0,
-    isPlay: false
+    visibleTime: 0,
+    isPlay: true
 }
 
 export const reducerMusic = (state: StateMusic = initialState, action: ActionMusic): StateMusic => {
@@ -15,6 +16,11 @@ export const reducerMusic = (state: StateMusic = initialState, action: ActionMus
             return {
                 ...state,
                 currentTime: action.currentTime
+            };
+        case MusicTypeActions.CHANGE_VISIBLE_TIME:
+            return {
+                ...state,
+                visibleTime: action.visibleTime
             };
         case MusicTypeActions.CHANGE_NAME:
             return {
@@ -46,7 +52,6 @@ export const reducerMusic = (state: StateMusic = initialState, action: ActionMus
                 ...state,
                 isPlay: false
             };
-
         default:
             return state;
     }

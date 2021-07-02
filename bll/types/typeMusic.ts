@@ -4,6 +4,7 @@ export interface StateMusic {
     volume: number
     srcAudio: string
     currentTime: number
+    visibleTime: number
     isPlay: boolean
 }
 
@@ -13,8 +14,9 @@ export enum MusicTypeActions {
     CHANGE_VOLUME = "CHANGE_VOLUME",
     CHANGE_SRC_AUDIO = "CHANGE_SRC_AUDIO",
     CHANGE_CURRENT_TIME = "CHANGE_CURRENT_TIME",
+    CHANGE_VISIBLE_TIME = "CHANGE_VISIBLE_TIME",
     PLAY = "PLAY",
-    STOP = "STOP",
+    STOP = "STOP"
 }
 
 interface IActionChangeName {
@@ -38,8 +40,13 @@ interface IActionChangeSrcAudio {
 }
 
 interface IActionChangeCurrentTime {
-    type: MusicTypeActions.CHANGE_CURRENT_TIME,
+    type: MusicTypeActions.CHANGE_CURRENT_TIME
     currentTime: number
+}
+
+interface IActionChangeVisibleTime {
+    type: MusicTypeActions.CHANGE_VISIBLE_TIME
+    visibleTime: number
 }
 
 interface IActionPlay {
@@ -55,5 +62,6 @@ export type ActionMusic = IActionChangeName |
     IActionChangeVolume |
     IActionChangeSrcAudio |
     IActionChangeCurrentTime |
+    IActionChangeVisibleTime |
     IActionPlay |
     IActionStop; 
