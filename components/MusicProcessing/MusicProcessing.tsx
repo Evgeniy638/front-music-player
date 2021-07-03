@@ -6,8 +6,10 @@ interface Props {
 
 }
 
+let audio: HTMLAudioElement;
+
 const MusicProcessing: React.FC<Props> = () => {
-    const ref: RefObject<HTMLAudioElement> = React.createRef();
+    console.log("rerender");
 
     const srcAudio = useTypedSelector(selectors.getMusicSrcAudio);
     const volume = useTypedSelector(selectors.getMusicVolume);
@@ -19,63 +21,53 @@ const MusicProcessing: React.FC<Props> = () => {
     const {changeCurrentTime} = useActions();
     const {stopMusic} = useActions();
 
-    useEffect(() => {
-        console.log("изменения currentTime", currentTime, ref)
-        if (ref.current) {
-            ref.current.currentTime = currentTime;
-        }
-    }, [currentTime]);
-
-    useEffect(() => {
-        console.log("изменения volume", volume, ref)
-        if (ref.current) {
-            ref.current.volume = volume;
-        }
-    }, [volume]);
-
-    useEffect(() => {
-        console.log("изменения isPlay", isPlay, ref)
-        if (ref.current) {
-            if (isPlay) {
-                ref.current.play();
-            } else {
-                ref.current.pause();
-            }
-        }
-    }, [isPlay]);
-
-    useEffect(() => {
-        const htmlAudio = ref.current;
-
-        return () => {
-            if (htmlAudio !== null) {
-                changeCurrentTime(htmlAudio.currentTime);
-            }
-        }
-    }, []);
-
-    const onTimeUpdate: React.ReactEventHandler<HTMLAudioElement> = (e) => {
-        changeVisibleTime(e.currentTarget.currentTime);
+    const onTimeUpdate = () => {
+        changeVisibleTime(audio.currentTime);
     }
 
-    const onLoadedMetadata: React.ReactEventHandler<HTMLAudioElement> = (e) => {
-        changeDuration(e.currentTarget.duration);
+    const onLoadedMetadata = () => {
+        changeDuration(audio.duration);
     }
 
-    const onEnded: React.ReactEventHandler<HTMLAudioElement> = (e) => {
+    const onEnded = () => {
         stopMusic();
     }
 
-    return (
-        <audio 
-            ref={ref} 
-            onTimeUpdate={onTimeUpdate} 
-            onLoadedMetadata={onLoadedMetadata} 
-            onEnded={onEnded}
-        >
-            <source src={srcAudio} />
-        </audio>
-    )
+    useEffect(() => {
+        if (!audio) {
+            audio = new Audio();
+        }
+
+        audio.addEventListener("timeupdate", onTimeUpdate);
+        audio.addEventListener("loadedmetadata", onLoadedMetadata);
+        audio.addEventListener("ended", onEnded);
+
+        return () => {
+            changeCurrentTime(audio.currentTime);
+        }
+    }, []);
+
+    useEffect(() => {
+        audio.src = srcAudio;
+    }, [srcAudio]);
+
+    useEffect(() => {
+        audio.currentTime = currentTime;
+    }, [currentTime]);
+
+    useEffect(() => {
+        audio.volume = volume;
+    }, [volume]);
+
+    useEffect(() => {
+        if (isPlay) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }, [isPlay]);
+
+    return null;
 }
 
-export default MusicProcessing;
+export default React.memo(MusicProcessing);
