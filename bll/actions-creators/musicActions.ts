@@ -21,6 +21,13 @@ export const changeVisibleTime = (visibleTime: number): ActionMusic => {
     }
 }
 
+export const changeDuration = (duration: number): ActionMusic => {
+    return {
+        type: MusicTypeActions.CHANGE_DURATION,
+        duration
+    }
+}
+
 export const changeSrcAudio = (srcAudio: string): ActionMusic => {
     return {
         type: MusicTypeActions.CHANGE_SRC_AUDIO,

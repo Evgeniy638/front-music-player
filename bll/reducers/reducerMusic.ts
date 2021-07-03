@@ -7,7 +7,8 @@ const initialState: StateMusic = {
     volume: 1,
     currentTime: 0,
     visibleTime: 0,
-    isPlay: true
+    duration: 0,
+    isPlay: false
 }
 
 export const reducerMusic = (state: StateMusic = initialState, action: ActionMusic): StateMusic => {
@@ -21,6 +22,11 @@ export const reducerMusic = (state: StateMusic = initialState, action: ActionMus
             return {
                 ...state,
                 visibleTime: action.visibleTime
+            };
+        case MusicTypeActions.CHANGE_DURATION:
+            return {
+                ...state,
+                duration: action.duration
             };
         case MusicTypeActions.CHANGE_NAME:
             return {

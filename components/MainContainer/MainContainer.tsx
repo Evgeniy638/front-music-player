@@ -6,6 +6,7 @@ import { setBaseUrl } from "../../api";
 import style from "./MainContainer.module.scss";
 import Navbar from "../Navbar/Navbar";
 import MusicProcessing from "../MusicProcessing/MusicProcessing";
+import MusicPlayerFooter from "../MusicPlayerFooter/MusicPlayerFooter";
 
 setBaseUrl(getConfig().publicRuntimeConfig.BASE_URL);
 
@@ -26,6 +27,7 @@ const MainContainer= (props: IPropsMainContainer) => {
                     {props.children}
                 </main>
                 <footer className={style.MainContainer__footer}>
+                    <MusicPlayerFooter/>
                 </footer>
             </div>
         </>

@@ -6,6 +6,8 @@ export const getMusicCurrentTime = (state: RootState): number => state.reducerMu
 
 export const getMusicVisibleTime = (state: RootState): number => state.reducerMusic.visibleTime;
 
+export const getMusicDuration = (state: RootState): number => state.reducerMusic.duration;
+
 export const getMusicSrcAudio = (state: RootState): string => state.reducerMusic.srcAudio;
 
 export const getMusicSrcImage = (state: RootState): string => state.reducerMusic.srcImage;

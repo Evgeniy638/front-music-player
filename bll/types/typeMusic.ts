@@ -6,6 +6,7 @@ export interface StateMusic {
     currentTime: number
     visibleTime: number
     isPlay: boolean
+    duration: number
 }
 
 export enum MusicTypeActions {
@@ -15,6 +16,7 @@ export enum MusicTypeActions {
     CHANGE_SRC_AUDIO = "CHANGE_SRC_AUDIO",
     CHANGE_CURRENT_TIME = "CHANGE_CURRENT_TIME",
     CHANGE_VISIBLE_TIME = "CHANGE_VISIBLE_TIME",
+    CHANGE_DURATION = "CHANGE_DURATION",
     PLAY = "PLAY",
     STOP = "STOP"
 }
@@ -57,11 +59,17 @@ interface IActionStop {
     type: MusicTypeActions.STOP
 }
 
+interface IActionChangeDuration {
+    type: MusicTypeActions.CHANGE_DURATION,
+    duration: number
+}
+
 export type ActionMusic = IActionChangeName | 
     IActionChangeSrcImage |
     IActionChangeVolume |
     IActionChangeSrcAudio |
     IActionChangeCurrentTime |
     IActionChangeVisibleTime |
+    IActionChangeDuration |
     IActionPlay |
     IActionStop; 

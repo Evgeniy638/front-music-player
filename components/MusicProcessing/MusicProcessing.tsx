@@ -15,39 +15,65 @@ const MusicProcessing: React.FC<Props> = () => {
     const isPlay = useTypedSelector(selectors.isPlayMusic);
 
     const {changeVisibleTime} = useActions();
+    const {changeDuration} = useActions();
+    const {changeCurrentTime} = useActions();
+    const {stopMusic} = useActions();
 
     useEffect(() => {
+        console.log("изменения currentTime", currentTime, ref)
         if (ref.current) {
-            console.log(currentTime);
             ref.current.currentTime = currentTime;
         }
-    }, [currentTime, ref]);
+    }, [currentTime]);
 
     useEffect(() => {
+        console.log("изменения volume", volume, ref)
         if (ref.current) {
-            console.log(volume)
             ref.current.volume = volume;
         }
-    }, [volume, ref]);
+    }, [volume]);
 
     useEffect(() => {
+        console.log("изменения isPlay", isPlay, ref)
         if (ref.current) {
-            console.log(isPlay)
             if (isPlay) {
                 ref.current.play();
             } else {
                 ref.current.pause();
             }
         }
-    }, [isPlay, ref]);
+    }, [isPlay]);
+
+    useEffect(() => {
+        const htmlAudio = ref.current;
+
+        return () => {
+            if (htmlAudio !== null) {
+                changeCurrentTime(htmlAudio.currentTime);
+            }
+        }
+    }, []);
 
     const onTimeUpdate: React.ReactEventHandler<HTMLAudioElement> = (e) => {
         changeVisibleTime(e.currentTarget.currentTime);
     }
 
+    const onLoadedMetadata: React.ReactEventHandler<HTMLAudioElement> = (e) => {
+        changeDuration(e.currentTarget.duration);
+    }
+
+    const onEnded: React.ReactEventHandler<HTMLAudioElement> = (e) => {
+        stopMusic();
+    }
+
     return (
-        <audio ref={ref} onTimeUpdate={onTimeUpdate}>
-            <source src={srcAudio}  />
+        <audio 
+            ref={ref} 
+            onTimeUpdate={onTimeUpdate} 
+            onLoadedMetadata={onLoadedMetadata} 
+            onEnded={onEnded}
+        >
+            <source src={srcAudio} />
         </audio>
     )
 }
