@@ -49,6 +49,12 @@ export const changeVolume = (volume: number): ActionMusic => {
     }
 }
 
+export const toggleVolume = (): ActionMusic => {
+    return {
+        type: MusicTypeActions.TOGGLE_VOLUME
+    }
+}
+
 export const playMusic = (): ActionMusic => {
     return {
         type: MusicTypeActions.PLAY

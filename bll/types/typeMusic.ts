@@ -1,7 +1,9 @@
 export interface StateMusic {
+    artist: string
     name: string
     srcImage: string
     volume: number
+    prevVolume: number
     srcAudio: string
     currentTime: number
     visibleTime: number
@@ -13,6 +15,7 @@ export enum MusicTypeActions {
     CHANGE_NAME = "CHANGE_NAME",
     CHANGE_SRC_IMAGE = "CHANGE_SRC_IMAGE",
     CHANGE_VOLUME = "CHANGE_VOLUME",
+    TOGGLE_VOLUME = "TOGGLE_VOLUME",
     CHANGE_SRC_AUDIO = "CHANGE_SRC_AUDIO",
     CHANGE_CURRENT_TIME = "CHANGE_CURRENT_TIME",
     CHANGE_VISIBLE_TIME = "CHANGE_VISIBLE_TIME",
@@ -34,6 +37,10 @@ interface IActionChangeSrcImage {
 interface IActionChangeVolume {
     type: MusicTypeActions.CHANGE_VOLUME,
     volume: number
+}
+
+interface IActionToggleVolume {
+    type: MusicTypeActions.TOGGLE_VOLUME
 }
 
 interface IActionChangeSrcAudio {
@@ -67,6 +74,7 @@ interface IActionChangeDuration {
 export type ActionMusic = IActionChangeName | 
     IActionChangeSrcImage |
     IActionChangeVolume |
+    IActionToggleVolume |
     IActionChangeSrcAudio |
     IActionChangeCurrentTime |
     IActionChangeVisibleTime |

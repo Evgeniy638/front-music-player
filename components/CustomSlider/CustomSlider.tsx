@@ -3,15 +3,16 @@ import { Slider, withStyles } from "@material-ui/core";
 const CustomSlider = withStyles({
     root: {
         color: '#52af77',
-        height: 8,
+        height: 4,
+        margin: '0 12px'
     },
     thumb: {
-        height: 24,
-        width: 24,
+        height: 16,
+        width: 16,
         backgroundColor: '#fff',
         border: '2px solid currentColor',
-        marginTop: -8,
-        marginLeft: -12,
+        marginTop: -6,
+        marginLeft: -8,
         '&:focus, &:hover, &$active': {
             boxShadow: 'inherit',
         },
@@ -21,12 +22,12 @@ const CustomSlider = withStyles({
         left: 'calc(-50% + 4px)',
     },
     track: {
-        height: 8,
-        borderRadius: 4,
+        height: 4,
+        borderRadius: 2,
     },
     rail: {
-        height: 8,
-        borderRadius: 4,
+        height: 4,
+        borderRadius: 2,
     },
 })(Slider);
 

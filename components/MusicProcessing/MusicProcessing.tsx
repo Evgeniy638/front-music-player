@@ -9,8 +9,6 @@ interface Props {
 let audio: HTMLAudioElement;
 
 const MusicProcessing: React.FC<Props> = () => {
-    console.log("rerender");
-
     const srcAudio = useTypedSelector(selectors.getMusicSrcAudio);
     const volume = useTypedSelector(selectors.getMusicVolume);
     const currentTime = useTypedSelector(selectors.getMusicCurrentTime);

@@ -1,10 +1,12 @@
 import { ActionMusic, MusicTypeActions, StateMusic } from './../types/typeMusic';
 
 const initialState: StateMusic = {
-    name: "",
-    srcImage: "",
+    name: "Monster",
+    artist: "RADIO TAPOK",
+    srcImage: "https://i1.sndcdn.com/artworks-000605087293-eslspr-t500x500.jpg",
     srcAudio: "https://files-storeee.herokuapp.com/upload/123.mp3",
     volume: 1,
+    prevVolume: 1,
     currentTime: 0,
     visibleTime: 0,
     duration: 0,
@@ -47,6 +49,12 @@ export const reducerMusic = (state: StateMusic = initialState, action: ActionMus
             return {
                 ...state,
                 volume: action.volume
+            };
+        case MusicTypeActions.TOGGLE_VOLUME:
+            return {
+                ...state,
+                prevVolume: state.volume,
+                volume: state.volume > 0 ?0 :state.prevVolume
             };
         case MusicTypeActions.PLAY:
             return {

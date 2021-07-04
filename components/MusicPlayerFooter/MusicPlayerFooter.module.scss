@@ -1,0 +1,6 @@
+.MusicPlayerFooter {
+    display: grid;
+    grid-template-columns: $footer-side-width 1fr $footer-side-width;
+    grid-template-rows: 90px;
+}
+ 
