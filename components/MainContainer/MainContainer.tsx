@@ -7,6 +7,7 @@ import style from "./MainContainer.module.scss";
 import Navbar from "../Navbar/Navbar";
 import MusicProcessing from "../MusicProcessing/MusicProcessing";
 import MusicPlayerFooter from "../MusicPlayerFooter/MusicPlayerFooter";
+import TokenProcessing from "../TokenProcessing/TokenProcessing";
 
 setBaseUrl(getConfig().publicRuntimeConfig.BASE_URL);
 
@@ -17,6 +18,7 @@ interface IPropsMainContainer {
 const MainContainer= (props: IPropsMainContainer) => {
     return (
         <>
+            <TokenProcessing/>
             <MusicPlayerHead/>
             <MusicProcessing/>
             <div className={style.MainContainer}>
