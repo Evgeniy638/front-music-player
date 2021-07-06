@@ -1,10 +1,9 @@
+import { reducerMusic } from './reducerMusic';
 import { HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux"
-import reducerCount, { IAction } from './reducerCount';
-import { AnyAction } from 'redux';
 
 const rootReducer = combineReducers({
-    reducerCount
+    reducerMusic
 });
 
 export const reducer = (state: any, action: any) => {

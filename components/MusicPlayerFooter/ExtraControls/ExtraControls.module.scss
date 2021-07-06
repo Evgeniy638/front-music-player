@@ -1,0 +1,11 @@
+.ExtraControls {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+    &__slider {
+        display: flex;
+        align-items: center;
+        width: $footer-side-width;
+    }
+}
