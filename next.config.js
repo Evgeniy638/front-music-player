@@ -1,7 +1,8 @@
 module.exports = {
     reactStrictMode: true,
     publicRuntimeConfig: {
-        BASE_URL: process.env.BASE_URL
+        BASE_URL: process.env.BASE_URL,
+        CLIENT_ID: process.env.CLIENT_ID
     },
     images: {
         domains: ['i1.sndcdn.com'],

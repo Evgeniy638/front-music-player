@@ -1,4 +1,4 @@
-import { config } from "./config";
+import { config, setAccessToken } from "./config";
 import { makeRequest } from './makeRequest';
 import { apiHealth } from "./rest/health";
 
@@ -9,3 +9,5 @@ export const setBaseUrl = (baseUrl: string) => {
 export { makeRequest };
 
 export { apiHealth };
+
+export { setAccessToken };
