@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import getConfig from 'next/config';
 import { useRouter } from "next/dist/client/router";
-import { constants } from "../../constants.ts";
+import { constants } from "../../constants";
+import { setAccessToken } from "../../api";
 
 interface Props { }
 
@@ -24,7 +25,7 @@ const TokenProcessing: React.FC<Props> = () => {
 
             window.location.href = `https://accounts.spotify.com/authorize?${queryParams}`;
         } else {
-            window.location.href = `/login/${token}`;
+            setAccessToken(token);
         }
         return ()=>{}
     }, []);

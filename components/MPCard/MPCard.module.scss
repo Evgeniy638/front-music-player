@@ -1,0 +1,24 @@
+.MPCard {    
+    background: #181818;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    &:hover {
+        background: #282828;
+    }
+
+    &__imageWrap {
+        padding-bottom: 100%;
+        background-color: grey;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    &__name {
+        margin-top: 5px;
+        color: $primary-color;
+    }
+}

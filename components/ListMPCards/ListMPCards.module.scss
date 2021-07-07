@@ -1,0 +1,14 @@
+.ListMPCards {
+    &__list {
+        display: grid;
+    }
+
+    &__substring {
+        margin-bottom: 10px;
+    }
+
+
+    &__title {
+        color: $primary-color;
+    }
+}

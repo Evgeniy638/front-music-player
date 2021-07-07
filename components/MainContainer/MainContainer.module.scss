@@ -13,7 +13,8 @@
 
     &__main {
         background-color: #121212;
-        overflow: auto;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     &__footer {
